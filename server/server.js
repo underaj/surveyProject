@@ -1,9 +1,11 @@
 var express = require('express');
 
 var app = express();
+
+require('./config/express')(app);
+
 app.use(express.static(__dirname + '/../client'));
 app.use(express.static(__dirname + '/../compiled'));
-require('./config/express')(app);
 require('./config/routes')(app);
 
 app.listen(3000, function() {

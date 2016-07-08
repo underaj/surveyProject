@@ -1,5 +1,5 @@
 import React from 'react';
-import SurveyList from './surveyList.jsx';
+import { SurveyList } from './surveyList.jsx';
 import getSurveyList from '../helper.js';
 
 var dummyList = [
@@ -21,9 +21,11 @@ export default class App extends React.Component {
   
   componentDidMount() {
     getSurveyList(newSurveyList => {
+      console.log(newSurveyList);
       this.setState({
-        surveyList: newSurveyList
+        surveys: newSurveyList
       })
+      console.log();
     });
   }
 
