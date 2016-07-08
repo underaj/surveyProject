@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import App from './components/app.jsx';
 // var $ = require("jquery");
 /**
  * Import the stylesheet you want used! Here we just reference
@@ -14,7 +14,4 @@ import ReactDOM from 'react-dom';
  */
 
 // // import { App } from './components/app';
-var App = require('./components/app.jsx');
-console.log(App);
-console.log('wt');
 ReactDOM.render(<App/>, document.getElementById('container'));

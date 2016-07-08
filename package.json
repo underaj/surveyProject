@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "babel ./client --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline"
+    "comp": "webpack --progress --colors --watch"
   },
   "author": "",
   "license": "ISC",
