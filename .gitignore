@@ -7,4 +7,7 @@ node_modules/
 ## Compiled files ##
 compiled/
 
+*.log
+server/seed
+
 ## API keys ##

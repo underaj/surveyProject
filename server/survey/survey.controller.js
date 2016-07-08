@@ -23,6 +23,8 @@ var surveys = [
 
 ];
 
+var Survey = require('./survey.model');
+
 module.exports = {
   get: function(req, res) {
     res.send(surveys);
