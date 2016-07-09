@@ -1,6 +1,6 @@
 import React from 'react';
 import { SurveyList } from './surveyList.jsx';
-import getSurveyList from '../helper.js';
+import PostSurveyForm from './search.jsx';
 
 var dummyList = [
  {
@@ -17,10 +17,11 @@ export default class App extends React.Component {
     this.state = {
       surveys: dummyList
     };
+    console.log(this.props.postSurvey);
   }
   
   componentDidMount() {
-    getSurveyList(newSurveyList => {
+    this.props.getSurveyList(newSurveyList => {
       console.log(newSurveyList);
       this.setState({
         surveys: newSurveyList
@@ -36,7 +37,8 @@ export default class App extends React.Component {
     return (
       <div>
         <h2>Whats for lunch?</h2>
-        <SurveyList surveys={this.state.surveys}/>
+        <PostSurveyForm postSurvey={this.props.postSurvey}/>
+        <SurveyList surveys={this.state.surveys} />
       </div>
     )
   }

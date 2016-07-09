@@ -34,7 +34,9 @@ module.exports = {
     res.send(surveys[id]);
   },
   post: function(req, res) {
-
+    surveys.push(req.body);
+    console.log(surveys);
+    res.send('good job sompopcorn');
   },
   put: function(req, res) {
 

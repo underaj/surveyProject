@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app.jsx';
+import { getSurveyList, postSurvey } from './helper.js';
 // var $ = require("jquery");
 /**
  * Import the stylesheet you want used! Here we just reference
@@ -14,4 +15,4 @@ import App from './components/app.jsx';
  */
 
 // // import { App } from './components/app';
-ReactDOM.render(<App/>, document.getElementById('container'));
+ReactDOM.render(<App getSurveyList={getSurveyList} postSurvey={postSurvey}/>, document.getElementById('container'));
