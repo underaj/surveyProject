@@ -19,16 +19,23 @@ export default class App extends React.Component {
   }
   
   componentDidMount() {
+    this.getSurveyList();
+  }
+
+  getSurveyList() {
     this.props.getSurveyList(newSurveyList => {
       this.setState({
         surveys: newSurveyList
-      })
-      console.log();
+      });
     });
   }
 
-  // getSurveyList() {
-  // }
+  postSurvey(postObj) {
+    this.props.postSurvey(postObj);
+      // .done((err, data) => {
+      //   this.getSurveyList();
+      // });
+  }
 
   render () {
     return (

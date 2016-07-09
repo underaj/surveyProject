@@ -1,8 +1,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
-
 var surveySchema = new Schema({
   title: {type: String, required: true},
   creator: {type: String, required: true},

@@ -1,28 +1,3 @@
-// var surveys = [
-
-//  {
-//    title: 'Restauruant A',
-//    create: 'Person A',
-//    votes: 5
-//  },
-//  {
-//    title: 'Restauruant B',
-//    create: 'Person B',
-//    votes: 4
-//  },
-//  {
-//    title: 'Restauruant C',
-//    create: 'Person C',
-//    votes: 3
-//  },
-//  {
-//    title: 'Restauruant D',
-//    create: 'Person D',
-//    votes: 2
-//  },
-
-// ];
-
 var Survey = require('./survey.model');
 require('../seed/survey.seed');
 
