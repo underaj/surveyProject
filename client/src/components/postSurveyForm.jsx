@@ -4,19 +4,19 @@ export default class PostSurveyForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurant: '',
+      title: '',
       username: ''
     }
   }
 
   render() {
     return (
-      <div className="search">
+      <div className="post-title">
         Restaurant name
-        <input className="search-input" type="text" onChange={ (event) => this.state.restaurant = event.target.value } />
+        <input className="search-input" type="text" onChange={ (event) => this.state.title = event.target.value } />
         Username
         <input className="search-input" type="text" onChange={ (event) => this.state.username = event.target.value } />
-        <button onClick={ () => this.props.postSurvey({restaurant: this.state.restaurant, username: this.state.username})}>
+        <button onClick={ () => this.props.postSurvey({title: this.state.title, username: this.state.username})}>
           Post
         </button>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { SurveyList } from './surveyList.jsx';
-import PostSurveyForm from './search.jsx';
+import PostSurveyForm from './postSurveyForm.jsx';
 
 var dummyList = [
  {
@@ -10,19 +10,16 @@ var dummyList = [
  }
 ];
 
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       surveys: dummyList
     };
-    console.log(this.props.postSurvey);
   }
   
   componentDidMount() {
     this.props.getSurveyList(newSurveyList => {
-      console.log(newSurveyList);
       this.setState({
         surveys: newSurveyList
       })

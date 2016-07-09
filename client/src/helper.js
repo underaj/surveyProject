@@ -9,7 +9,7 @@ export var postSurvey = function postSurvey (postObj) {
   console.log(JSON.stringify(postObj));
   var jqXHR = $.ajax({
     method: 'POST',
-    url: '/api/surveys',
+    url: 'http://localhost:3000/api/surveys',
     data: JSON.stringify(postObj),
     contentType: 'application/json'
   });
