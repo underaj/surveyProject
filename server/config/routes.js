@@ -1,12 +1,12 @@
+var express = require('express');
+var router = express.Router();
 var SurveyCtrl = require('../survey/survey.controller');
 
-module.exports = function(app) {
+router.get('/surveys', SurveyCtrl.get);
+router.get('/surveys/:id', SurveyCtrl.getOne);
+router.post('/surveys', SurveyCtrl.post);
+router.put('/surveys/:id', SurveyCtrl.put);
+router.delete('/surveys/:id', SurveyCtrl.deleteOne);
+router.post('/surveys/:id/upvote', SurveyCtrl.upvote);
 
-  app.get('/api/surveys', SurveyCtrl.get);
-  app.get('/api/surveys/:id', SurveyCtrl.getOne);
-  app.post('/api/surveys', SurveyCtrl.post);
-  app.put('/api/surveys/:id', SurveyCtrl.put);
-  app.delete('/api/surveys/:id', SurveyCtrl.deleteOne);
-  app.post('/api/surveys/:id/upvote', SurveyCtrl.upvote);
-
-};
+module.exports = router;
