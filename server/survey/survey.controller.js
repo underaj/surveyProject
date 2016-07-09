@@ -24,6 +24,9 @@ module.exports = {
 
   },
   upvote: function(req, res) {
-
+    console.log(req.body);
+    Survey.upVote(req.body, function(obj) {
+      res.status(200).send(obj);
+    });
   }
 };

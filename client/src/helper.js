@@ -14,3 +14,13 @@ export var postSurvey = function postSurvey (postObj) {
   });
 };
 
+export var upVote = function upVote (title) {
+  return $.ajax({
+    method: 'POST',
+    url: 'http://localhost:3000/api/surveys/upvote',
+    data: JSON.stringify(title),
+    contentType: 'application/json'
+  });
+};
+
+

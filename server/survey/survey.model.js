@@ -41,4 +41,17 @@ module.exports.saveNewRest = function(postObj, cb) {
     });
 };
 
+module.exports.upVote = function(postTitle, cb) {
+  Survey.findOne( postTitle )
+    .exec(function(err, result) { 
+      if (err) {
+        console.log(err); 
+      } else if (result) {
+        result.votes++;
+        result.save(function(err, data) {
+          cb(result);  
+        });
+      }
+    });
+};
 
