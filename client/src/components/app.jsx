@@ -1,6 +1,9 @@
 import React from 'react';
 import { SurveyList } from './surveyList.jsx';
 import PostSurveyForm from './postSurveyForm.jsx';
+import SignUpForm from './signup.jsx';
+import SignInForm from './signin.jsx';
+
 
 var dummyList = [
  {
@@ -20,37 +23,51 @@ export default class App extends React.Component {
   }
   
   componentDidMount() {
-    this.signup({username:'10212313231231', password:'1234'});
-
+    this.getUserDetail();
     this.getSurveyList();
     // get username from server
   }
 
   getSurveyList() {
-    this.props.getSurveyList(newSurveyList => {
+    this.props.apiGet('/api/surveys', newSurveyList => {
       this.setState({
         surveys: newSurveyList
       });
     });
   }
 
+  getUserDetail() {
+    this.props.apiGet('/api/users/getUserDetail', userDetail => {
+      this.setState({
+        user: userDetail.username
+      });
+    });
+  }
+
   postSurvey(postObj) {
     postObj.username = postObj.username || 'ANON';
-    this.props.post('/api/surveys', postObj)
+    this.props.apiPost('/api/surveys', postObj)
       .done((err, data) => {
         this.getSurveyList();
       });
   }
 
   upVote(title) {
-    this.props.post('/api/surveys/upvote', title)
+    this.props.apiPost('/api/surveys/upvote', title)
       .done((err, data) => {
         this.getSurveyList();
       });
   }
 
+  signin(userObj) {
+    this.props.apiPost('/api/users/signin', userObj)
+      .done(userObj => {
+        this.setState({user: userObj.username});
+      });
+  }
+
   signup(userObj) {
-    this.props.post('/api/users/signup', userObj)
+    this.props.apiPost('/api/users/signup', userObj)
       .done(userObj => {
         this.setState({user: userObj.username});
       });
@@ -61,7 +78,20 @@ export default class App extends React.Component {
       <div>
         <h2>Whats for lunch?</h2>
         <h5>{this.state.user}</h5>
-        <a href='/signin'>Sign in here</a>
+        <div>
+          <a href='/signin'>Sign in here</a>
+        </div>
+        <div>
+          <a href='/api/users/signout'>Sign Out</a>
+        </div>
+        <div>
+          <button onClick={() => this.getUserDetail()}>Get User Detail</button>
+        </div>
+        Sign In Form
+        <SignUpForm signin={this.signin.bind(this)} />
+        Sign Up Form
+        <SignUpForm signup={this.signup.bind(this)} />
+        Post New Restaurant
         <PostSurveyForm postSurvey={this.postSurvey.bind(this)} user={this.state.user} />
         <SurveyList upVote={this.upVote.bind(this)} surveys={this.state.surveys} /> 
       </div>

@@ -14,6 +14,8 @@ router.post('/surveys/upvote', SurveyCtrl.upvote);
 
 // User Routes
 router.post('/users/signup', UserCtrl.signup);
+router.get('/users/signout', UserCtrl.signout);
+router.get('/users/getUserDetail', UserCtrl.getUserDetail);
 // router.post('/api/users/signin', UserCtrl.signin);
 
 module.exports = router;

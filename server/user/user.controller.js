@@ -29,5 +29,19 @@ module.exports = {
           });
         }
       });
+  },
+  signin: function(req, res) {
+
+  },
+  signout: function(req, res) {
+    req.logout();
+    res.redirect('/');
+  },
+  getUserDetail: function(req, res) {
+    if (req.user) {
+      res.send(req.user);
+    } else {
+      res.send({username: 'ANONYMOUS'});
+    }
   }
 };

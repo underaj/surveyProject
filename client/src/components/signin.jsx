@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class SignUpForm extends React.Component {
+export default class SignInForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,11 +13,11 @@ export default class SignUpForm extends React.Component {
     return (
       <div className="post-title">
         Username
-        <input className="signup-input" type="text" onChange={ (event) => this.state.username = event.target.value } />
+        <input className="signin-input" type="text" onChange={ (event) => this.state.username = event.target.value } />
         Password
-        <input className="signup-input" type="text" onChange={ (event) => this.state.password = event.target.value } />
-        <button onClick={ () => this.props.signup({title: this.state.title, username: this.state.username})}>
-          Post
+        <input className="signin-input" type="text" onChange={ (event) => this.state.password = event.target.value } />
+        <button onClick={ () => this.props.signin({username: this.state.username, password: this.state.password})}>
+          Sign in
         </button>
       </div>
     );

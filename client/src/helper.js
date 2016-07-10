@@ -1,11 +1,11 @@
 var $ = require('jquery');
 
-export var getSurveyList = function getSurveyList (callback) {
-  var jqXHR = $.get('http://localhost:3000/api/surveys');
+export var apiGet = function apiGet (path, callback) {
+  var jqXHR = $.get('http://localhost:3000' + path);
   jqXHR.done(data => callback(data));
 };
 
-export var post = function post (path, postObj) {
+export var apiPost = function apiPost (path, postObj) {
   return $.ajax({
     method: 'POST',
     url: 'http://localhost:3000' + path,
