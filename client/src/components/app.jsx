@@ -35,6 +35,7 @@ export default class App extends React.Component {
   }
 
   postSurvey(postObj) {
+    postObj.username = postObj.username || 'ANON';
     this.props.post('/api/surveys', postObj)
       .done((err, data) => {
         this.getSurveyList();
