@@ -3,7 +3,7 @@ var app = express();
 var apiRoutes = require('./config/routes');
 
 require('./config/mongoose')();
-require('./config/express')(app);
+require('./config/express').setup(app);
 
 app.use(express.static(__dirname + '/../client'));
 app.use(express.static(__dirname + '/../compiled'));

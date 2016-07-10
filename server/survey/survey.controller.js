@@ -12,19 +12,18 @@ module.exports = {
     res.send(surveys[id]);
   },
   post: function(req, res) {
-    console.log(req.body);
     Survey.saveNewRest(req.body, function(restaurant) {
       res.status(200).send(restaurant);
     });
   },
-  put: function(req, res) {
+  // put: function(req, res) {
 
-  },
-  deleteOne: function(req, res) {
+  // },
+  // deleteOne: function(req, res) {
 
-  },
+  // },
   upvote: function(req, res) {
-    console.log(req.body);
+    console.log(req.session);
     Survey.upVote(req.body, function(obj) {
       res.status(200).send(obj);
     });

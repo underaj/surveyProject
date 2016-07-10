@@ -14,12 +14,16 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      surveys: dummyList
+      surveys: dummyList,
+      user: 'anonymous'
     };
   }
   
   componentDidMount() {
+    this.signup({username:'underaj100', password:'1234'});
+
     this.getSurveyList();
+    // get username from server
   }
 
   getSurveyList() {
@@ -31,16 +35,23 @@ export default class App extends React.Component {
   }
 
   postSurvey(postObj) {
-    this.props.postSurvey(postObj)
+    this.props.post('/api/surveys', postObj)
       .done((err, data) => {
         this.getSurveyList();
       });
   }
 
   upVote(title) {
-    this.props.upVote(title)
+    this.props.post('/api/surveys/upvote', title)
       .done((err, data) => {
         this.getSurveyList();
+      });
+  }
+
+  signup(userObj) {
+    this.props.post('/api/users/signup', userObj)
+      .done(userObj => {
+        this.setState({user: userObj.username});
       });
   }
 
@@ -48,8 +59,10 @@ export default class App extends React.Component {
     return (
       <div>
         <h2>Whats for lunch?</h2>
-        <PostSurveyForm postSurvey={this.postSurvey.bind(this)}/>
-        <SurveyList surveys={this.state.surveys} upVote={this.upVote.bind(this)}/>
+        <h5>{this.state.user}</h5>
+        <a href='/signin'>Sign in here</a>
+        <PostSurveyForm postSurvey={this.postSurvey.bind(this)} user={this.state.user} />
+        <SurveyList upVote={this.upVote.bind(this)} surveys={this.state.surveys} /> 
       </div>
     )
   }

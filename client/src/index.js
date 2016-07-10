@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app.jsx';
-import { getSurveyList, postSurvey, upVote } from './helper.js';
+import { getSurveyList, post } from './helper.js';
 
-ReactDOM.render(<App getSurveyList={getSurveyList} postSurvey={postSurvey} upVote={upVote} />, document.getElementById('container'));
+ReactDOM.render(<App getSurveyList={getSurveyList} post={post} />, document.getElementById('container'));
