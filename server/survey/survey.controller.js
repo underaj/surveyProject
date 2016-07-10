@@ -23,7 +23,6 @@ module.exports = {
 
   // },
   upvote: function(req, res) {
-    console.log(req.session);
     Survey.upVote(req.body, function(obj) {
       res.status(200).send(obj);
     });

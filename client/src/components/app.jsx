@@ -15,12 +15,12 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       surveys: dummyList,
-      user: 'anonymous'
+      user: ''
     };
   }
   
   componentDidMount() {
-    this.signup({username:'underaj100', password:'1234'});
+    this.signup({username:'10212313231231', password:'1234'});
 
     this.getSurveyList();
     // get username from server

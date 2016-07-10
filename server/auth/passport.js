@@ -17,18 +17,20 @@ passport.use(new LocalStrategy(
   }
 ));
 
-passport.serializeUser(function(username, done) {
-  done(null, username);
+passport.serializeUser(function(user, done) {
+  console.log('++++++');
+  console.log(user);
+  done(null, user.username);
 });
 
 passport.deserializeUser(function(username, done) {
+  console.log('=======');
+  console.log(username);
   User.findOne( {username: username} )
     .exec(function(err, userObj) { 
       if (err) {
         console.log(err); 
       } else if (userObj) {
-        console.log('============');
-        console.log(userObj);
         done(null, userObj);
       } else {
         done();
