@@ -8,6 +8,5 @@ node_modules/
 compiled/
 
 *.log
-server/seed
 
 ## API keys ##
