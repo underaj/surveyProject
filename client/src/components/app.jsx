@@ -45,7 +45,7 @@ export default class App extends React.Component {
   }
 
   postSurvey(postObj) {
-    postObj.username = postObj.username || 'ANON';
+    postObj.username = postObj.username || 'ANONYMOUS';
     this.props.apiPost('/api/surveys', postObj)
       .done((err, data) => {
         this.getSurveyList();
@@ -62,14 +62,14 @@ export default class App extends React.Component {
   signin(userObj) {
     this.props.apiPost('/api/users/signin', userObj)
       .done(userObj => {
-        this.setState({user: userObj.username});
+        this.getUserDetail();
       });
   }
 
   signup(userObj) {
     this.props.apiPost('/api/users/signup', userObj)
       .done(userObj => {
-        this.setState({user: userObj.username});
+        this.getUserDetail();
       });
   }
 

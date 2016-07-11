@@ -3,8 +3,6 @@ var morgan = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
 
-require('../auth/passport');
-
 module.exports = {
   setup: function(app) {
     app.use(morgan('dev'));
