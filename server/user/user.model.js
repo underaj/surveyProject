@@ -19,7 +19,15 @@ var UserSchema = new Schema({
 
 UserSchema.set('timestamps', true);
 
-var User = mongoose.model('User', UserSchema);
+UserSchema.methods.comparepasswords = function(password, cb) {
+  bcrypt.compare(password, this.password, function(err, res) {
+    if (res) {
+      cb(res);
+    } else {
+      cb(res);
+    }
+  });
+};
 
 UserSchema.pre('save', function(next) {
   var user = this;
@@ -41,7 +49,9 @@ UserSchema.pre('save', function(next) {
   });
 });
 
-module.exports = User;
+module.exports = mongoose.model('User', UserSchema);
+
+
 
 
 

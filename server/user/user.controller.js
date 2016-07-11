@@ -9,9 +9,8 @@ module.exports = {
         if (err) {
           console.log(err); 
         } else if (user) {
-          console.log('here');
-          console.log(req.user);
-          res.send(req.user);
+          console.log('User name already exists');
+          res.redirect('/');
         } else {
           user = new User( {username: username, password: password} );
           user.save(function(err, savedUser) {
@@ -31,7 +30,33 @@ module.exports = {
       });
   },
   signin: function(req, res) {
-
+    console.log('here');
+    console.log(req.body);
+    User.findOne( {username: req.body.username} )
+      .exec(function(err, user) {
+        if (err) {
+          console.log(error);
+        } else if (user) {
+          user.comparepasswords(req.body.password, function(isMatch) {
+            if (isMatch) {
+              req.login(user, function(err) { 
+                if (err) {
+                  console.log('error');
+                } else {
+                  console.log('User logged in');
+                  res.redirect('/');
+                }
+              });
+            } else {
+              console.log('Incorrect username and password combination');
+              res.redirect('/');
+            }
+          });
+        } else {
+          console.log('User does not exist');
+          res.redirect('/');
+        }
+      });
   },
   signout: function(req, res) {
     req.logout();

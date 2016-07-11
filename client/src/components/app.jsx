@@ -88,7 +88,7 @@ export default class App extends React.Component {
           <button onClick={() => this.getUserDetail()}>Get User Detail</button>
         </div>
         Sign In Form
-        <SignUpForm signin={this.signin.bind(this)} />
+        <SignInForm signin={this.signin.bind(this)} />
         Sign Up Form
         <SignUpForm signup={this.signup.bind(this)} />
         Post New Restaurant

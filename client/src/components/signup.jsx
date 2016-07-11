@@ -15,7 +15,7 @@ export default class SignUpForm extends React.Component {
         Username
         <input className="signup-input" type="text" onChange={ (event) => this.state.username = event.target.value } />
         Password
-        <input className="signup-input" type="text" onChange={ (event) => this.state.password = event.target.value } />
+        <input className="signup-input" type="password" onChange={ (event) => this.state.password = event.target.value } />
         <button onClick={ () => this.props.signup({username: this.state.username, password: this.state.password})}>
           Signup
         </button>
