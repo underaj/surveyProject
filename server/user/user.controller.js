@@ -30,8 +30,6 @@ module.exports = {
       });
   },
   signin: function(req, res) {
-    console.log('here');
-    console.log(req.body);
     User.findOne( {username: req.body.username} )
       .exec(function(err, user) {
         if (err) {
